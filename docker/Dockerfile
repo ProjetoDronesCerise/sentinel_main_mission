@@ -1,4 +1,4 @@
-FROM arm64v8/ubuntu:bionic
+FROM arm64v8/ubuntu:jammy
 
 # Evitar prompts chatos
 ENV DEBIAN_FRONTEND=noninteractive
@@ -9,15 +9,16 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Diret√≥rio de trabalho dentro do container
+# Diret¢rio de trabalho dentro do container
 WORKDIR /root/app
 
 # Instala o MAVSDK (Python)
 RUN python3 -m pip install --no-cache-dir --upgrade pip \
  && python3 -m pip install --no-cache-dir mavsdk
 
-# Copia seus scripts para dentro do container
+# Copia seus scripts (opcional - mantÇm seu arquivo dentro da imagem)
 COPY script_main_mission.py ./ 
 
-# Comando padr√£o do container
-CMD ["python3", "connection_test.py"]
+# Comando padr∆o: abre um shell interativo
+CMD ["/bin/bash"]
+
