@@ -1,1 +1,2 @@
-voxl-docker -i voxl-mavsdk-python:custom
+#!/bin/bash
+docker -i voxl-mavsdk-python:custom

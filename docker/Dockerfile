@@ -17,11 +17,7 @@ RUN python3 -m pip install --no-cache-dir --upgrade pip \
  && python3 -m pip install --no-cache-dir mavsdk
 
 # Copia seus scripts para dentro do container
-# (ajusta o caminho conforme seus arquivos)
-COPY connection_test.py ./ 
-
-# Se você tiver mais scripts/pacotes:
-# COPY . .
+COPY script_main_mission.py ./ 
 
 # Comando padrão do container
 CMD ["python3", "connection_test.py"]
