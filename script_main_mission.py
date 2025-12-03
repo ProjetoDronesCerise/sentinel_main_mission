@@ -4,7 +4,7 @@ from mavsdk import System
 async def main():
     drone = System()
     # aqui voce so abre a porta 14540 local e espera pacotes
-    await drone.connect(system_address="udp://192.168.0.54:14540")
+    await drone.connect(system_address="udp://:14551")
 
     print("Esperando heartbeat do drone...")
 

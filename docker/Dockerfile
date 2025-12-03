@@ -5,20 +5,23 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Atualiza e instala Python 3 + pip
 RUN apt-get update && apt-get install -y \
-    python3 python3-pip python3-setuptools python3-dev \
+    python3 \
+    python3-pip \
+    python3-setuptools \
+    python3-dev \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Diret¢rio de trabalho dentro do container
+# Diretorio de trabalho dentro do container
 WORKDIR /root/app
 
 # Instala o MAVSDK (Python)
 RUN python3 -m pip install --no-cache-dir --upgrade pip \
  && python3 -m pip install --no-cache-dir mavsdk
 
-# Copia seus scripts (opcional - mant‚m seu arquivo dentro da imagem)
+# Copia seus scripts (opcional - mantï¿½m seu arquivo dentro da imagem)
 COPY script_main_mission.py ./ 
 
-# Comando padrÆo: abre um shell interativo
+# Comando padrao: abre um shell interativo
 CMD ["/bin/bash"]
 
